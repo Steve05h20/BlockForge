@@ -33,32 +33,32 @@
 
 #### Étape 1.1 : Setup Projet
 
-- [ ] Créer repo Git
-- [ ] `pnpm create vite . --template react-ts`
-- [ ] Installer dépendances de base (voir [../docs/STACK_TECHNIQUE.md](./../docs/STACK_TECHNIQUE.md))
-- [ ] Configurer `tsconfig.json`
-- [ ] Configurer `vite.config.ts` avec paths alias
-- [ ] Setup ESLint + Prettier
+- [x] Créer repo Git
+- [x] `pnpm create vite . --template react-ts`
+- [x] Installer dépendances de base (voir [../docs/STACK_TECHNIQUE.md](./../docs/STACK_TECHNIQUE.md))
+- [x] Configurer `tsconfig.json`
+- [x] Configurer `vite.config.ts` avec paths alias
+- [x] Setup ESLint + Prettier
 
 #### Étape 1.2 : Design System
 
-- [ ] Installer TailwindCSS
-- [ ] Installer shadcn/ui
-- [ ] Créer thème (dark/light)
-- [ ] Créer composants UI de base (Button, Input, Select)
+- [x] Installer TailwindCSS
+- [x] Installer shadcn/ui
+- [x] Créer thème (dark/light)
+- [x] Créer composants UI de base (Button, Input, Select)
 - [ ] Documenter dans Storybook (optionnel)
 
 #### Étape 1.3 : Layout
 
-- [ ] Installer rc-dock
-- [ ] Créer layout principal avec panels dockable
-- [ ] Créer Topbar, Bottom Bar
-- [ ] Tester responsive
+- [x] Installer rc-dock
+- [x] Créer layout principal avec panels dockable
+- [x] Créer Topbar, Bottom Bar
+- [x] Tester responsive - destop first
 
 #### Étape 1.4 : Routing
 
-- [ ] Installer React Router
-- [ ] Créer routes (Dashboard, Designer, Architect, Client, Library, Settings)
+- [x] Installer React Router
+- [x] Créer routes (Dashboard, Designer, Architect, Client, Library, Settings)
 - [ ] Créer ProtectedRoute component
 - [ ] Tester navigation
 

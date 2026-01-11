@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@blockForge-ui': path.resolve(__dirname, './blockForge-ui'),
     },
   },
 })

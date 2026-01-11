@@ -3,7 +3,8 @@ export default {
   darkMode: ["class"],
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./application/**/*.{js,ts,jsx,tsx}",
+    "./blockForge-ui/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
   	extend: {

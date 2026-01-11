@@ -27,8 +27,9 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["application/*"],
+      "@blockForge-ui/*": ["blockForge-ui/*"]
     }
   },
-  "include": ["src"]
+  "include": ["application", "blockForge-ui/components", "blockForge-ui/lib", "blockForge-ui/ui"]
 }
