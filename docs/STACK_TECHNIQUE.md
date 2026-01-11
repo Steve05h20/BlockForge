@@ -1271,7 +1271,8 @@ trackEvent("block_created", {
 
 ```json
 {
-  "name": "modular-builder",
+  "name": "block_forge",
+  "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -1285,67 +1286,72 @@ trackEvent("block_created", {
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0",
-
-    "pixi.js": "^8.0.0",
-    "@pixi/react": "^7.1.0",
-
-    "three": "^0.160.0",
-    "@react-three/fiber": "^8.15.0",
-    "@react-three/drei": "^9.90.0",
-    "three-stdlib": "^2.28.0",
-
-    "zustand": "^4.4.7",
-    "immer": "^10.0.3",
-
-    "@radix-ui/react-dialog": "^1.0.5",
-    "@radix-ui/react-dropdown-menu": "^2.0.6",
-    "@radix-ui/react-select": "^2.0.0",
-    "@radix-ui/react-slider": "^1.1.2",
-
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.28.0",
+    
+    "pixi.js": "^8.5.0",
+    "@pixi/react": "^8.0.0",
+    
+    "three": "^0.170.0",
+    "@react-three/fiber": "^8.17.0",
+    "@react-three/drei": "^9.114.0",
+    "three-stdlib": "^2.30.0",
+    
+    "zustand": "^5.0.0",
+    "immer": "^10.1.1",
+    
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-slider": "^1.2.1",
+    
     "rc-dock": "^3.2.18",
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/sortable": "^8.0.0",
-
-    "react-hook-form": "^7.49.2",
-    "zod": "^3.22.4",
-    "@hookform/resolvers": "^3.3.3",
-
+    
+    "react-hook-form": "^7.54.0",
+    "zod": "^3.24.1",
+    "@hookform/resolvers": "^3.9.1",
+    
     "fuse.js": "^7.0.0",
-    "mathjs": "^12.2.0",
-    "jspdf": "^2.5.1",
-
-    "@sentry/react": "^7.91.0",
-    "mixpanel-browser": "^2.48.1"
+    "mathjs": "^13.2.0",
+    "jspdf": "^2.5.2",
+    
+    "@sentry/react": "^8.45.0",
+    "mixpanel-browser": "^2.61.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@types/three": "^0.160.0",
-
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.8",
-
-    "typescript": "^5.3.3",
-
-    "tailwindcss": "^3.4.0",
-    "postcss": "^8.4.32",
-    "autoprefixer": "^10.4.16",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.170.0",
+    "@types/node": "^22.10.0",
+    
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.0",
+    
+    "typescript": "^5.7.0",
+    
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.20",
     "tailwindcss-animate": "^1.0.7",
-
-    "eslint": "^8.56.0",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-
-    "vitest": "^1.1.0",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/jest-dom": "^6.1.5",
-    "jsdom": "^23.0.1",
-
-    "@playwright/test": "^1.40.1"
+    
+    "eslint": "^9.18.0",
+    "@eslint/js": "^9.18.0",
+    "typescript-eslint": "^8.18.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^16.5.0",
+    
+    "vitest": "^2.1.8",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "jsdom": "^26.0.0",
+    
+    "@playwright/test": "^1.49.0"
   }
 }
 ```
