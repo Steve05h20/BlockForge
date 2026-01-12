@@ -30,7 +30,7 @@ Un logiciel professionnel de construction modulaire permettant :
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  MODULARITÉ + SCALABILITÉ + PERFORMANCE + UX PROFESSIONNELLE │
+│ MODULARITÉ + SCALABILITÉ + PERFORMANCE + UX PROFESSIONNELLE │
 └─────────────────────────────────────────────────────────────┘
          │
          ├── Séparation stricte des rôles (Designer/Architecte/Client)
@@ -285,83 +285,83 @@ src/
 
 ```typescript
 interface Block {
-  id: string; // UUID
-  name: string;
-  description?: string;
+  id: string // UUID
+  name: string
+  description?: string
 
   // Géométrie
   geometry: {
-    type: "box" | "cylinder" | "custom";
+    type: 'box' | 'cylinder' | 'custom'
     dimensions: {
-      width: number; // X
-      height: number; // Y
-      depth: number; // Z
-    };
-    vertices?: Vector3[]; // Pour custom shapes
-    faces?: Face[];
-  };
+      width: number // X
+      height: number // Y
+      depth: number // Z
+    }
+    vertices?: Vector3[] // Pour custom shapes
+    faces?: Face[]
+  }
 
   // Visuel
   appearance: {
-    color: string; // Hex color
+    color: string // Hex color
     texture?: {
-      id: string;
-      url: string;
-      scale: [number, number];
-    };
-    material: MaterialType; // 'plastic' | 'wood' | 'metal' | 'glass'
-    opacity: number; // 0-1
-  };
+      id: string
+      url: string
+      scale: [number, number]
+    }
+    material: MaterialType // 'plastic' | 'wood' | 'metal' | 'glass'
+    opacity: number // 0-1
+  }
 
   // Métadonnées
   metadata: {
-    category: string; // 'wall' | 'floor' | 'furniture' | 'door'
-    tags: string[];
-    createdBy: string; // User ID
-    createdAt: Date;
-    updatedAt: Date;
-    version: number;
-  };
+    category: string // 'wall' | 'floor' | 'furniture' | 'door'
+    tags: string[]
+    createdBy: string // User ID
+    createdAt: Date
+    updatedAt: Date
+    version: number
+  }
 
   // Connection points (snap points)
-  snapPoints: SnapPoint[];
+  snapPoints: SnapPoint[]
 
   // Properties custom
-  customProperties: Record<string, any>;
+  customProperties: Record<string, any>
 
   // 2D representation (PixiJS)
   pixi: {
-    sprite?: string; // URL sprite 2D
-    graphics?: PixiGraphicsData;
-  };
+    sprite?: string // URL sprite 2D
+    graphics?: PixiGraphicsData
+  }
 
   // 3D representation (Three.js)
   three?: {
-    geometry: BufferGeometry;
-    material: Material;
-  };
+    geometry: BufferGeometry
+    material: Material
+  }
 }
 
 interface SnapPoint {
-  id: string;
-  position: Vector3; // Position relative au block
-  normal: Vector3; // Direction de snap
-  type: "edge" | "corner" | "center" | "custom";
-  enabled: boolean;
+  id: string
+  position: Vector3 // Position relative au block
+  normal: Vector3 // Direction de snap
+  type: 'edge' | 'corner' | 'center' | 'custom'
+  enabled: boolean
 }
 
 type MaterialType =
-  | "plastic"
-  | "wood"
-  | "metal"
-  | "glass"
-  | "concrete"
-  | "fabric";
+  | 'plastic'
+  | 'wood'
+  | 'metal'
+  | 'glass'
+  | 'concrete'
+  | 'fabric'
 
 interface Vector3 {
-  x: number;
-  y: number;
-  z: number;
+  x: number
+  y: number
+  z: number
 }
 ```
 
@@ -369,152 +369,152 @@ interface Vector3 {
 
 ```typescript
 interface Project {
-  id: string;
-  name: string;
-  description?: string;
+  id: string
+  name: string
+  description?: string
 
   // Métadonnées
   metadata: {
-    createdBy: string;
-    createdAt: Date;
-    updatedAt: Date;
-    version: number;
-    thumbnail?: string;
-  };
+    createdBy: string
+    createdAt: Date
+    updatedAt: Date
+    version: number
+    thumbnail?: string
+  }
 
   // Configuration
   config: {
-    gridSize: number; // Taille de la grille en unités
-    snapTolerance: number; // Distance de snap
-    units: "metric" | "imperial";
-    defaultLayer: string;
-  };
+    gridSize: number // Taille de la grille en unités
+    snapTolerance: number // Distance de snap
+    units: 'metric' | 'imperial'
+    defaultLayer: string
+  }
 
   // Layers
-  layers: Layer[];
+  layers: Layer[]
 
   // Instances de blocs placés
-  instances: BlockInstance[];
+  instances: BlockInstance[]
 
   // Caméra et viewport
   viewport: {
-    position: Vector3;
-    rotation: Vector3;
-    zoom: number;
-    mode: "2D" | "3D" | "hybrid";
-  };
+    position: Vector3
+    rotation: Vector3
+    zoom: number
+    mode: '2D' | '3D' | 'hybrid'
+  }
 
   // Historique (undo/redo)
-  history: HistoryEntry[];
-  historyIndex: number;
+  history: HistoryEntry[]
+  historyIndex: number
 }
 
 interface Layer {
-  id: string;
-  name: string;
-  visible: boolean;
-  locked: boolean;
-  opacity: number;
-  color: string; // Couleur de highlight
-  order: number; // Z-index
-  parent?: string; // Pour nested layers
-  children: string[];
+  id: string
+  name: string
+  visible: boolean
+  locked: boolean
+  opacity: number
+  color: string // Couleur de highlight
+  order: number // Z-index
+  parent?: string // Pour nested layers
+  children: string[]
 }
 
 interface BlockInstance {
-  id: string; // Instance ID (différent du Block ID)
-  blockId: string; // Référence au Block template
+  id: string // Instance ID (différent du Block ID)
+  blockId: string // Référence au Block template
 
   // Transform
   transform: {
-    position: Vector3;
-    rotation: Vector3; // Euler angles
-    scale: Vector3;
-  };
+    position: Vector3
+    rotation: Vector3 // Euler angles
+    scale: Vector3
+  }
 
   // Layer
-  layerId: string;
+  layerId: string
 
   // État
   state: {
-    selected: boolean;
-    locked: boolean;
-    visible: boolean;
-  };
+    selected: boolean
+    locked: boolean
+    visible: boolean
+  }
 
   // Overrides (propriétés custom pour cette instance)
   overrides?: {
-    color?: string;
-    material?: MaterialType;
-    customProperties?: Record<string, any>;
-  };
+    color?: string
+    material?: MaterialType
+    customProperties?: Record<string, any>
+  }
 
   // Connections avec autres instances
-  connections: Connection[];
+  connections: Connection[]
 }
 
 interface Connection {
-  targetInstanceId: string;
-  sourceSnapPointId: string;
-  targetSnapPointId: string;
-  locked: boolean;
+  targetInstanceId: string
+  sourceSnapPointId: string
+  targetSnapPointId: string
+  locked: boolean
 }
 
 interface HistoryEntry {
-  id: string;
-  timestamp: Date;
-  action: ActionType;
-  data: any; // Snapshot des données modifiées
-  userId: string;
+  id: string
+  timestamp: Date
+  action: ActionType
+  data: any // Snapshot des données modifiées
+  userId: string
 }
 
 type ActionType =
-  | "add_instance"
-  | "remove_instance"
-  | "move_instance"
-  | "rotate_instance"
-  | "scale_instance"
-  | "modify_properties"
-  | "add_layer"
-  | "remove_layer"
-  | "modify_layer";
+  | 'add_instance'
+  | 'remove_instance'
+  | 'move_instance'
+  | 'rotate_instance'
+  | 'scale_instance'
+  | 'modify_properties'
+  | 'add_layer'
+  | 'remove_layer'
+  | 'modify_layer'
 ```
 
 ### 3. Library
 
 ```typescript
 interface Library {
-  id: string;
-  name: string;
+  id: string
+  name: string
 
   // Categories
-  categories: Category[];
+  categories: Category[]
 
   // Blocs disponibles
-  blocks: Block[];
+  blocks: Block[]
 
   // Configuration
   config: {
-    sortBy: "name" | "date" | "usage";
-    viewMode: "grid" | "list";
-    filters: LibraryFilters;
-  };
+    sortBy: 'name' | 'date' | 'usage'
+    viewMode: 'grid' | 'list'
+    filters: LibraryFilters
+  }
 }
 
 interface Category {
-  id: string;
-  name: string;
-  icon?: string;
-  parent?: string;
-  children: string[];
-  blockIds: string[];
+  id: string
+  name: string
+  icon?: string
+  parent?: string
+  children: string[]
+  blockIds: string[]
 }
 
 interface LibraryFilters {
-  categories: string[];
-  tags: string[];
-  materials: MaterialType[];
-  searchQuery: string;
+  categories: string[]
+  tags: string[]
+  materials: MaterialType[]
+  searchQuery: string
 }
 ```
 
@@ -522,37 +522,37 @@ interface LibraryFilters {
 
 ```typescript
 interface User {
-  id: string;
-  name: string;
-  email: string;
-  role: UserRole;
-  permissions: Permission[];
-  preferences: UserPreferences;
+  id: string
+  name: string
+  email: string
+  role: UserRole
+  permissions: Permission[]
+  preferences: UserPreferences
 }
 
-type UserRole = "designer" | "architect" | "client" | "admin";
+type UserRole = 'designer' | 'architect' | 'client' | 'admin'
 
 interface Permission {
-  resource: "blocks" | "projects" | "library" | "settings";
-  actions: ("create" | "read" | "update" | "delete")[];
+  resource: 'blocks' | 'projects' | 'library' | 'settings'
+  actions: ('create' | 'read' | 'update' | 'delete')[]
 }
 
 interface UserPreferences {
-  theme: "light" | "dark";
-  language: string;
-  gridVisible: boolean;
-  snapEnabled: boolean;
-  panelLayout: PanelLayout;
-  shortcuts: Record<string, string>;
+  theme: 'light' | 'dark'
+  language: string
+  gridVisible: boolean
+  snapEnabled: boolean
+  panelLayout: PanelLayout
+  shortcuts: Record<string, string>
 }
 
 interface PanelLayout {
   panels: {
-    id: string;
-    position: "left" | "right" | "top" | "bottom" | "floating";
-    size: number; // Width ou height en pixels
-    visible: boolean;
-  }[];
+    id: string
+    position: 'left' | 'right' | 'top' | 'bottom' | 'floating'
+    size: number // Width ou height en pixels
+    visible: boolean
+  }[]
 }
 ```
 
@@ -560,35 +560,35 @@ interface PanelLayout {
 
 ```typescript
 interface ExportConfig {
-  format: ExportFormat;
-  options: ExportOptions;
+  format: ExportFormat
+  options: ExportOptions
 }
 
 type ExportFormat =
-  | "3D_GLTF"
-  | "3D_OBJ"
-  | "3D_STL"
-  | "2D_PDF"
-  | "2D_SVG"
-  | "2D_PNG"
-  | "JSON";
+  | '3D_GLTF'
+  | '3D_OBJ'
+  | '3D_STL'
+  | '2D_PDF'
+  | '2D_SVG'
+  | '2D_PNG'
+  | 'JSON'
 
 interface ExportOptions {
   // 3D options
-  includeTextures?: boolean;
-  includeMaterials?: boolean;
-  optimize?: boolean;
-  scale?: number;
+  includeTextures?: boolean
+  includeMaterials?: boolean
+  optimize?: boolean
+  scale?: number
 
   // 2D options
-  resolution?: number; // DPI
-  dimensions?: { width: number; height: number };
-  layers?: string[]; // Layers à exporter
-  viewAngle?: "top" | "front" | "side" | "isometric";
+  resolution?: number // DPI
+  dimensions?: { width: number; height: number }
+  layers?: string[] // Layers à exporter
+  viewAngle?: 'top' | 'front' | 'side' | 'isometric'
 
   // Metadata
-  includeMetadata?: boolean;
-  watermark?: string;
+  includeMetadata?: boolean
+  watermark?: string
 }
 ```
 
@@ -616,31 +616,26 @@ graph TD
 **Étapes détaillées :**
 
 1. **Accès Dashboard**
-
    - Utilisateur avec rôle "Designer" se connecte
    - Vue des projets récents + bouton "Créer un Bloc"
 
 2. **Mode Designer**
-
    - Workspace dédié avec canvas PixiJS 2D
    - Panels : Properties, Preview 3D, Library (read-only)
    - Toolbar : outils de dessin (rectangle, cercle, polygon, path)
 
 3. **Création Géométrie**
-
    - Dessiner shape 2D en vue XY
    - Inputs numériques pour dimensions précises
    - Basculer vue XZ ou YZ pour définir profondeur/hauteur
    - Système de snap automatique aux grilles
 
 4. **Paramétrage Visuel**
-
    - Properties Panel : color picker, material selector, texture upload
    - Preview en temps réel sur canvas 2D
    - Bouton "Preview 3D" → modal avec Three.js preview
 
 5. **Snap Points**
-
    - Mode "Edit Snap Points"
    - Cliquer sur edges/corners pour placer points
    - Définir normal direction avec arrow tool
@@ -675,19 +670,16 @@ graph TD
 **Étapes détaillées :**
 
 1. **Création Projet**
-
    - Dashboard → "Nouveau Projet"
    - Config initiale : nom, units (metric/imperial), grid size
    - Création layers par défaut : "Ground", "Walls", "Roof"
 
 2. **Workspace Architecte**
-
    - Canvas Three.js en mode 2D (vue top-down orthographique)
    - Panels : Library, Layers, Properties, History
    - Toolbar : Select, Move, Rotate, Scale, Multi-select
 
 3. **Placement Blocs**
-
    - Library Panel → parcourir categories
    - Drag bloc depuis library → hover canvas
    - Preview fantôme avec outline
@@ -695,21 +687,18 @@ graph TD
    - Click pour placer
 
 4. **Manipulation**
-
    - Select tool : click pour sélectionner, shift+click multi-select
    - Move : drag avec snap to grid ou snap to blocks
    - Rotate : handle circulaire, snap angles 15°/45°/90°
    - Scale : handles sur bounding box (uniformément ou par axe)
 
 5. **Layer Management**
-
    - Layer Panel : toggle visibility, lock, opacity
    - Drag instances entre layers
    - Create nested layers (ex: "Walls" > "Interior" > "Kitchen")
    - Color coding pour identification visuelle
 
 6. **Vue 3D**
-
    - Toggle button "2D/3D"
    - Transition smooth du canvas
    - Camera controls : orbit, pan, zoom
@@ -741,39 +730,33 @@ graph TD
 **Étapes détaillées :**
 
 1. **Accès Client**
-
    - Architecte partage lien public ou privé (avec password)
    - Pas de login requis (ou login light)
    - Mode read-only strict
 
 2. **Viewer 3D**
-
    - Canvas Three.js full 3D
    - Controls : orbit (mouse), pan (right-click), zoom (scroll)
    - Boutons prédéfinis : "Top View", "Front", "Side", "Isometric"
    - Fullscreen mode
 
 3. **Navigation Avancée**
-
    - Minimap 2D en corner
    - Section planes (couper le modèle en X/Y/Z)
    - Exploded view (écarter les blocs pour voir structure)
    - Walkthrough mode (first-person camera)
 
 4. **Layers Control**
-
    - Layer Panel (simplifié)
    - Toggle visibility pour isoler parties
    - Pas de modification possible
 
 5. **Mesures**
-
    - Tool "Measure" : click 2 points → affiche distance
    - Tool "Area" : dessiner polygon → affiche surface
    - Annotations : placer pins avec texte custom
 
 6. **Feedback** (optionnel)
-
    - Bouton "Add Comment"
    - Click sur bloc → modal commentaire
    - Sauvegardé et visible pour Architecte
@@ -802,25 +785,25 @@ graph TD
 ```typescript
 class BlocksModule {
   // CRUD
-  createBlock(data: Partial<Block>): Block;
-  getBlock(id: string): Block | null;
-  updateBlock(id: string, data: Partial<Block>): Block;
-  deleteBlock(id: string): boolean;
+  createBlock(data: Partial<Block>): Block
+  getBlock(id: string): Block | null
+  updateBlock(id: string, data: Partial<Block>): Block
+  deleteBlock(id: string): boolean
 
   // Validation
-  validateBlock(block: Block): ValidationResult;
+  validateBlock(block: Block): ValidationResult
 
   // Conversion
-  toPixiGraphics(block: Block): PixiGraphicsData;
-  toThreeGeometry(block: Block): BufferGeometry;
+  toPixiGraphics(block: Block): PixiGraphicsData
+  toThreeGeometry(block: Block): BufferGeometry
 
   // Serialization
-  serialize(block: Block): string;
-  deserialize(data: string): Block;
+  serialize(block: Block): string
+  deserialize(data: string): Block
 
   // Versioning
-  getVersionHistory(blockId: string): BlockVersion[];
-  revertToVersion(blockId: string, version: number): Block;
+  getVersionHistory(blockId: string): BlockVersion[]
+  revertToVersion(blockId: string, version: number): Block
 }
 ```
 
@@ -846,22 +829,22 @@ class BlocksModule {
 ```typescript
 class LibraryModule {
   // Categories
-  createCategory(data: Partial<Category>): Category;
-  getCategories(): Category[];
+  createCategory(data: Partial<Category>): Category
+  getCategories(): Category[]
 
   // Search
-  searchBlocks(query: string, filters: LibraryFilters): Block[];
+  searchBlocks(query: string, filters: LibraryFilters): Block[]
 
   // Management
-  addBlockToLibrary(blockId: string, categoryId: string): void;
-  removeBlockFromLibrary(blockId: string): void;
+  addBlockToLibrary(blockId: string, categoryId: string): void
+  removeBlockFromLibrary(blockId: string): void
 
   // Import/Export
-  exportLibrary(categoryIds?: string[]): LibraryExport;
-  importLibrary(data: LibraryExport): ImportResult;
+  exportLibrary(categoryIds?: string[]): LibraryExport
+  importLibrary(data: LibraryExport): ImportResult
 
   // Thumbnails
-  generateThumbnail(blockId: string): Promise<string>;
+  generateThumbnail(blockId: string): Promise<string>
 }
 ```
 
@@ -889,36 +872,36 @@ class LibraryModule {
 ```typescript
 class GridSnapModule {
   // Grid
-  setGridSize(size: number): void;
-  toggleGridVisibility(visible: boolean): void;
+  setGridSize(size: number): void
+  toggleGridVisibility(visible: boolean): void
 
   // Snap to grid
-  snapToGrid(position: Vector3): Vector3;
+  snapToGrid(position: Vector3): Vector3
 
   // Snap to blocks
-  findNearbySnapPoints(position: Vector3, tolerance: number): SnapPoint[];
-  snapToPoint(position: Vector3, snapPoint: SnapPoint): Vector3;
+  findNearbySnapPoints(position: Vector3, tolerance: number): SnapPoint[]
+  snapToPoint(position: Vector3, snapPoint: SnapPoint): Vector3
 
   // Alignment
-  findAlignmentGuides(selectedInstances: BlockInstance[]): AlignmentGuide[];
-  alignInstances(instances: BlockInstance[], type: AlignType): void;
+  findAlignmentGuides(selectedInstances: BlockInstance[]): AlignmentGuide[]
+  alignInstances(instances: BlockInstance[], type: AlignType): void
 }
 
 type AlignType =
-  | "left"
-  | "center"
-  | "right"
-  | "top"
-  | "middle"
-  | "bottom"
-  | "distribute-horizontal"
-  | "distribute-vertical";
+  | 'left'
+  | 'center'
+  | 'right'
+  | 'top'
+  | 'middle'
+  | 'bottom'
+  | 'distribute-horizontal'
+  | 'distribute-vertical'
 
 interface AlignmentGuide {
-  axis: "x" | "y" | "z";
-  position: number;
-  instances: string[]; // IDs des instances alignées
-  type: "edge" | "center";
+  axis: 'x' | 'y' | 'z'
+  position: number
+  instances: string[] // IDs des instances alignées
+  type: 'edge' | 'center'
 }
 ```
 
@@ -945,25 +928,25 @@ interface AlignmentGuide {
 ```typescript
 class LayerModule {
   // CRUD
-  createLayer(data: Partial<Layer>): Layer;
-  getLayer(id: string): Layer | null;
-  updateLayer(id: string, data: Partial<Layer>): Layer;
-  deleteLayer(id: string): boolean;
+  createLayer(data: Partial<Layer>): Layer
+  getLayer(id: string): Layer | null
+  updateLayer(id: string, data: Partial<Layer>): Layer
+  deleteLayer(id: string): boolean
 
   // Hierarchy
-  setParent(layerId: string, parentId: string | null): void;
-  reorderLayers(layerIds: string[]): void;
+  setParent(layerId: string, parentId: string | null): void
+  reorderLayers(layerIds: string[]): void
 
   // Visibility
-  toggleVisibility(layerId: string, recursive?: boolean): void;
-  setOpacity(layerId: string, opacity: number): void;
+  toggleVisibility(layerId: string, recursive?: boolean): void
+  setOpacity(layerId: string, opacity: number): void
 
   // Lock
-  toggleLock(layerId: string, recursive?: boolean): void;
+  toggleLock(layerId: string, recursive?: boolean): void
 
   // Bulk operations
-  moveInstancesToLayer(instanceIds: string[], layerId: string): void;
-  getInstancesByLayer(layerId: string): BlockInstance[];
+  moveInstancesToLayer(instanceIds: string[], layerId: string): void
+  getInstancesByLayer(layerId: string): BlockInstance[]
 }
 ```
 
@@ -991,29 +974,29 @@ class LayerModule {
 ```typescript
 class ExportModule {
   // 3D Export
-  exportGLTF(project: Project, options: ExportOptions): Promise<Blob>;
-  exportOBJ(project: Project, options: ExportOptions): Promise<Blob>;
-  exportSTL(project: Project, options: ExportOptions): Promise<Blob>;
+  exportGLTF(project: Project, options: ExportOptions): Promise<Blob>
+  exportOBJ(project: Project, options: ExportOptions): Promise<Blob>
+  exportSTL(project: Project, options: ExportOptions): Promise<Blob>
 
   // 2D Export
-  exportPDF(project: Project, options: ExportOptions): Promise<Blob>;
-  exportSVG(project: Project, options: ExportOptions): Promise<string>;
-  exportPNG(project: Project, options: ExportOptions): Promise<Blob>;
+  exportPDF(project: Project, options: ExportOptions): Promise<Blob>
+  exportSVG(project: Project, options: ExportOptions): Promise<string>
+  exportPNG(project: Project, options: ExportOptions): Promise<Blob>
 
   // Data
-  exportJSON(project: Project): string;
+  exportJSON(project: Project): string
 
   // Templates
-  getTemplates(): ExportTemplate[];
-  applyTemplate(project: Project, templateId: string): RenderResult;
+  getTemplates(): ExportTemplate[]
+  applyTemplate(project: Project, templateId: string): RenderResult
 }
 
 interface ExportTemplate {
-  id: string;
-  name: string;
-  type: "2D" | "3D";
-  layout: LayoutConfig; // Multi-views, legends, title blocks
-  previewUrl: string;
+  id: string
+  name: string
+  type: '2D' | '3D'
+  layout: LayoutConfig // Multi-views, legends, title blocks
+  previewUrl: string
 }
 ```
 
@@ -1061,46 +1044,46 @@ interface ExportTemplate {
 // Converter : PixiJS → Three.js
 class PixiToThreeConverter {
   convert(block: Block): Three.Object3D {
-    const geometry = this.convertGeometry(block);
-    const material = this.convertMaterial(block);
-    const mesh = new Three.Mesh(geometry, material);
+    const geometry = this.convertGeometry(block)
+    const material = this.convertMaterial(block)
+    const mesh = new Three.Mesh(geometry, material)
 
     // Transfer properties
     mesh.userData = {
       blockId: block.id,
       snapPoints: block.snapPoints,
       customProperties: block.customProperties,
-    };
+    }
 
-    return mesh;
+    return mesh
   }
 
   private convertGeometry(block: Block): Three.BufferGeometry {
-    const { type, dimensions } = block.geometry;
+    const { type, dimensions } = block.geometry
 
     switch (type) {
-      case "box":
+      case 'box':
         return new Three.BoxGeometry(
           dimensions.width,
           dimensions.height,
           dimensions.depth
-        );
+        )
 
-      case "cylinder":
+      case 'cylinder':
         return new Three.CylinderGeometry(
           dimensions.width / 2,
           dimensions.width / 2,
           dimensions.height
-        );
+        )
 
-      case "custom":
+      case 'custom':
         // Extrude PixiJS path vers 3D
-        return this.extrudePixiPath(block.pixi.graphics, dimensions.depth);
+        return this.extrudePixiPath(block.pixi.graphics, dimensions.depth)
     }
   }
 
   private convertMaterial(block: Block): Three.Material {
-    const { color, texture, material, opacity } = block.appearance;
+    const { color, texture, material, opacity } = block.appearance
 
     const materialMap = {
       plastic: () =>
@@ -1136,9 +1119,9 @@ class PixiToThreeConverter {
           metalness: 0.1,
           transmission: 0.9,
         }),
-    };
+    }
 
-    return materialMap[material]();
+    return materialMap[material]()
   }
 
   private extrudePixiPath(
@@ -1146,18 +1129,18 @@ class PixiToThreeConverter {
     depth: number
   ): Three.BufferGeometry {
     // Convert PixiJS path to Three.js Shape
-    const shape = new Three.Shape();
+    const shape = new Three.Shape()
 
     // Parse PixiJS graphics commands
-    graphics.commands.forEach((cmd) => {
+    graphics.commands.forEach(cmd => {
       switch (cmd.type) {
-        case "moveTo":
-          shape.moveTo(cmd.x, cmd.y);
-          break;
-        case "lineTo":
-          shape.lineTo(cmd.x, cmd.y);
-          break;
-        case "bezierCurveTo":
+        case 'moveTo':
+          shape.moveTo(cmd.x, cmd.y)
+          break
+        case 'lineTo':
+          shape.lineTo(cmd.x, cmd.y)
+          break
+        case 'bezierCurveTo':
           shape.bezierCurveTo(
             cmd.cp1x,
             cmd.cp1y,
@@ -1165,18 +1148,18 @@ class PixiToThreeConverter {
             cmd.cp2y,
             cmd.x,
             cmd.y
-          );
-          break;
+          )
+          break
       }
-    });
+    })
 
     // Extrude to 3D
     const extrudeSettings = {
       depth,
       bevelEnabled: false,
-    };
+    }
 
-    return new Three.ExtrudeGeometry(shape, extrudeSettings);
+    return new Three.ExtrudeGeometry(shape, extrudeSettings)
   }
 }
 ```
@@ -1186,9 +1169,9 @@ class PixiToThreeConverter {
 ```typescript
 // Canvas Manager : gère PixiJS et Three.js
 class CanvasManager {
-  private pixiApp: PIXI.Application | null = null;
-  private threeScene: Three.Scene | null = null;
-  private threeRenderer: Three.WebGLRenderer | null = null;
+  private pixiApp: PIXI.Application | null = null
+  private threeScene: Three.Scene | null = null
+  private threeRenderer: Three.WebGLRenderer | null = null
 
   initPixi(container: HTMLElement): void {
     this.pixiApp = new PIXI.Application({
@@ -1196,39 +1179,39 @@ class CanvasManager {
       height: container.clientHeight,
       backgroundColor: 0xf5f5f5,
       antialias: true,
-    });
+    })
 
-    container.appendChild(this.pixiApp.view);
+    container.appendChild(this.pixiApp.view)
   }
 
   initThree(container: HTMLElement): void {
-    this.threeScene = new Three.Scene();
-    this.threeRenderer = new Three.WebGLRenderer({ antialias: true });
-    this.threeRenderer.setSize(container.clientWidth, container.clientHeight);
+    this.threeScene = new Three.Scene()
+    this.threeRenderer = new Three.WebGLRenderer({ antialias: true })
+    this.threeRenderer.setSize(container.clientWidth, container.clientHeight)
 
-    container.appendChild(this.threeRenderer.domElement);
+    container.appendChild(this.threeRenderer.domElement)
   }
 
-  switchMode(mode: "pixi" | "three"): void {
-    if (mode === "pixi" && this.pixiApp) {
-      this.pixiApp.view.style.display = "block";
+  switchMode(mode: 'pixi' | 'three'): void {
+    if (mode === 'pixi' && this.pixiApp) {
+      this.pixiApp.view.style.display = 'block'
       if (this.threeRenderer) {
-        this.threeRenderer.domElement.style.display = "none";
+        this.threeRenderer.domElement.style.display = 'none'
       }
-    } else if (mode === "three" && this.threeRenderer) {
-      this.threeRenderer.domElement.style.display = "block";
+    } else if (mode === 'three' && this.threeRenderer) {
+      this.threeRenderer.domElement.style.display = 'block'
       if (this.pixiApp) {
-        this.pixiApp.view.style.display = "none";
+        this.pixiApp.view.style.display = 'none'
       }
     }
   }
 
   cleanup(): void {
     if (this.pixiApp) {
-      this.pixiApp.destroy(true);
+      this.pixiApp.destroy(true)
     }
     if (this.threeRenderer) {
-      this.threeRenderer.dispose();
+      this.threeRenderer.dispose()
     }
   }
 }
@@ -1244,94 +1227,94 @@ class CanvasManager {
 // Store 1 : Project Store
 interface ProjectStore {
   // State
-  currentProject: Project | null;
-  projects: Project[];
+  currentProject: Project | null
+  projects: Project[]
 
   // Actions
-  createProject: (data: Partial<Project>) => void;
-  loadProject: (id: string) => Promise<void>;
-  saveProject: () => Promise<void>;
-  updateProjectConfig: (config: Partial<Project["config"]>) => void;
+  createProject: (data: Partial<Project>) => void
+  loadProject: (id: string) => Promise<void>
+  saveProject: () => Promise<void>
+  updateProjectConfig: (config: Partial<Project['config']>) => void
 
   // Viewport
-  setViewport: (viewport: Partial<Project["viewport"]>) => void;
-  toggleViewMode: () => void;
+  setViewport: (viewport: Partial<Project['viewport']>) => void
+  toggleViewMode: () => void
 }
 
 // Store 2 : Blocks Store
 interface BlocksStore {
-  blocks: Record<string, Block>;
+  blocks: Record<string, Block>
 
-  addBlock: (block: Block) => void;
-  updateBlock: (id: string, data: Partial<Block>) => void;
-  removeBlock: (id: string) => void;
-  getBlock: (id: string) => Block | undefined;
+  addBlock: (block: Block) => void
+  updateBlock: (id: string, data: Partial<Block>) => void
+  removeBlock: (id: string) => void
+  getBlock: (id: string) => Block | undefined
 }
 
 // Store 3 : Instances Store (Architecte)
 interface InstancesStore {
-  instances: Record<string, BlockInstance>;
+  instances: Record<string, BlockInstance>
 
-  addInstance: (instance: BlockInstance) => void;
-  removeInstance: (id: string) => void;
-  updateTransform: (id: string, transform: Partial<Transform>) => void;
-  setInstanceLayer: (id: string, layerId: string) => void;
+  addInstance: (instance: BlockInstance) => void
+  removeInstance: (id: string) => void
+  updateTransform: (id: string, transform: Partial<Transform>) => void
+  setInstanceLayer: (id: string, layerId: string) => void
 
   // Bulk operations
-  duplicateInstances: (ids: string[]) => void;
-  deleteInstances: (ids: string[]) => void;
+  duplicateInstances: (ids: string[]) => void
+  deleteInstances: (ids: string[]) => void
 }
 
 // Store 4 : Selection Store
 interface SelectionStore {
-  selectedIds: string[];
+  selectedIds: string[]
 
-  select: (id: string, multi?: boolean) => void;
-  deselect: (id: string) => void;
-  clearSelection: () => void;
-  selectAll: () => void;
+  select: (id: string, multi?: boolean) => void
+  deselect: (id: string) => void
+  clearSelection: () => void
+  selectAll: () => void
 
   // Computed
-  selectedInstances: () => BlockInstance[];
-  selectionBounds: () => BoundingBox;
+  selectedInstances: () => BlockInstance[]
+  selectionBounds: () => BoundingBox
 }
 
 // Store 5 : Layers Store
 interface LayersStore {
-  layers: Record<string, Layer>;
-  activeLayerId: string;
+  layers: Record<string, Layer>
+  activeLayerId: string
 
-  createLayer: (data: Partial<Layer>) => void;
-  updateLayer: (id: string, data: Partial<Layer>) => void;
-  deleteLayer: (id: string) => void;
-  setActiveLayer: (id: string) => void;
-  reorderLayers: (order: string[]) => void;
+  createLayer: (data: Partial<Layer>) => void
+  updateLayer: (id: string, data: Partial<Layer>) => void
+  deleteLayer: (id: string) => void
+  setActiveLayer: (id: string) => void
+  reorderLayers: (order: string[]) => void
 }
 
 // Store 6 : History Store (Undo/Redo)
 interface HistoryStore {
-  past: HistoryEntry[];
-  future: HistoryEntry[];
+  past: HistoryEntry[]
+  future: HistoryEntry[]
 
-  pushState: (entry: HistoryEntry) => void;
-  undo: () => void;
-  redo: () => void;
-  canUndo: () => boolean;
-  canRedo: () => boolean;
+  pushState: (entry: HistoryEntry) => void
+  undo: () => void
+  redo: () => void
+  canUndo: () => boolean
+  canRedo: () => boolean
 }
 
 // Store 7 : UI Store
 interface UIStore {
-  theme: "light" | "dark";
-  panelLayout: PanelLayout;
-  gridVisible: boolean;
-  snapEnabled: boolean;
+  theme: 'light' | 'dark'
+  panelLayout: PanelLayout
+  gridVisible: boolean
+  snapEnabled: boolean
 
-  toggleTheme: () => void;
-  setPanelVisibility: (panelId: string, visible: boolean) => void;
-  setPanelSize: (panelId: string, size: number) => void;
-  toggleGrid: () => void;
-  toggleSnap: () => void;
+  toggleTheme: () => void
+  setPanelVisibility: (panelId: string, visible: boolean) => void
+  setPanelSize: (panelId: string, size: number) => void
+  toggleGrid: () => void
+  toggleSnap: () => void
 }
 ```
 
@@ -1339,12 +1322,12 @@ interface UIStore {
 
 ```typescript
 // Middleware pour sync entre stores
-const syncMiddleware = (config) => (set, get, api) => {
+const syncMiddleware = config => (set, get, api) => {
   // Subscribe aux changements
   api.subscribe((state, prevState) => {
     // Ex: quand selection change, update UI
     if (state.selectedIds !== prevState.selectedIds) {
-      useUIStore.getState().updatePropertiesPanel(state.selectedIds);
+      useUIStore.getState().updatePropertiesPanel(state.selectedIds)
     }
 
     // Ex: quand instances change, push history
@@ -1352,14 +1335,14 @@ const syncMiddleware = (config) => (set, get, api) => {
       useHistoryStore.getState().pushState({
         id: nanoid(),
         timestamp: new Date(),
-        action: "modify_instances",
+        action: 'modify_instances',
         data: state.instances,
-      });
+      })
     }
-  });
+  })
 
-  return config(set, get, api);
-};
+  return config(set, get, api)
+}
 ```
 
 ---
@@ -1369,19 +1352,16 @@ const syncMiddleware = (config) => (set, get, api) => {
 ### Principes Design
 
 1. **Professional & Clean**
-
    - Inspiré de Figma (minimalist) + AutoCAD (functional)
    - Panels dockable et flottants
    - Dark mode par défaut (moins fatigue visuelle)
 
 2. **Contextual Tools**
-
    - Toolbar change selon mode (Designer vs Architecte)
    - Properties Panel adapte selon sélection
    - Shortcuts intelligents (context-aware)
 
 3. **Visual Feedback**
-
    - Toutes actions ont feedback visuel
    - Hover states, active states, disabled states
    - Loading states et progress indicators
@@ -1490,42 +1470,42 @@ const syncMiddleware = (config) => (set, get, api) => {
 ```typescript
 const SHORTCUTS = {
   // Tools
-  V: "select_tool",
-  M: "move_tool",
-  R: "rotate_tool",
-  S: "scale_tool",
+  V: 'select_tool',
+  M: 'move_tool',
+  R: 'rotate_tool',
+  S: 'scale_tool',
 
   // Actions
-  "Cmd+C": "copy",
-  "Cmd+V": "paste",
-  "Cmd+D": "duplicate",
-  Delete: "delete",
-  "Cmd+Z": "undo",
-  "Cmd+Shift+Z": "redo",
+  'Cmd+C': 'copy',
+  'Cmd+V': 'paste',
+  'Cmd+D': 'duplicate',
+  Delete: 'delete',
+  'Cmd+Z': 'undo',
+  'Cmd+Shift+Z': 'redo',
 
   // View
-  "Space+Drag": "pan_canvas",
-  "Cmd+Scroll": "zoom",
-  "1": "view_top",
-  "2": "view_front",
-  "3": "view_side",
-  "0": "view_3d",
+  'Space+Drag': 'pan_canvas',
+  'Cmd+Scroll': 'zoom',
+  '1': 'view_top',
+  '2': 'view_front',
+  '3': 'view_side',
+  '0': 'view_3d',
 
   // UI
-  "Cmd+\\": "toggle_panels",
-  G: "toggle_grid",
-  "Cmd+;": "toggle_snap",
+  'Cmd+\\': 'toggle_panels',
+  G: 'toggle_grid',
+  'Cmd+;': 'toggle_snap',
 
   // Multi-select
-  "Shift+Click": "add_to_selection",
-  "Cmd+A": "select_all",
-  "Cmd+Shift+A": "deselect_all",
+  'Shift+Click': 'add_to_selection',
+  'Cmd+A': 'select_all',
+  'Cmd+Shift+A': 'deselect_all',
 
   // Layers
-  "Cmd+Shift+N": "new_layer",
-  "Cmd+]": "move_layer_up",
-  "Cmd+[": "move_layer_down",
-};
+  'Cmd+Shift+N': 'new_layer',
+  'Cmd+]': 'move_layer_up',
+  'Cmd+[': 'move_layer_down',
+}
 ```
 
 ### Dark Mode Theme
@@ -1535,83 +1515,83 @@ const THEME = {
   dark: {
     // Backgrounds
     bg: {
-      primary: "#1e1e1e",
-      secondary: "#2d2d2d",
-      tertiary: "#3d3d3d",
-      canvas: "#252525",
+      primary: '#1e1e1e',
+      secondary: '#2d2d2d',
+      tertiary: '#3d3d3d',
+      canvas: '#252525',
     },
 
     // Text
     text: {
-      primary: "#e0e0e0",
-      secondary: "#a0a0a0",
-      disabled: "#606060",
+      primary: '#e0e0e0',
+      secondary: '#a0a0a0',
+      disabled: '#606060',
     },
 
     // Borders
     border: {
-      default: "#404040",
-      focus: "#0078d4",
-      hover: "#505050",
+      default: '#404040',
+      focus: '#0078d4',
+      hover: '#505050',
     },
 
     // Accent
     accent: {
-      primary: "#0078d4",
-      success: "#10b981",
-      warning: "#f59e0b",
-      error: "#ef4444",
+      primary: '#0078d4',
+      success: '#10b981',
+      warning: '#f59e0b',
+      error: '#ef4444',
     },
 
     // Canvas
     canvas: {
-      grid: "#333333",
-      snap: "#10b981",
-      selection: "#0078d4",
-      hover: "#60a5fa",
+      grid: '#333333',
+      snap: '#10b981',
+      selection: '#0078d4',
+      hover: '#60a5fa',
     },
   },
 
   light: {
     // Backgrounds
     bg: {
-      primary: "#ffffff",
-      secondary: "#f5f5f5",
-      tertiary: "#e5e5e5",
-      canvas: "#fafafa",
+      primary: '#ffffff',
+      secondary: '#f5f5f5',
+      tertiary: '#e5e5e5',
+      canvas: '#fafafa',
     },
 
     // Text
     text: {
-      primary: "#1a1a1a",
-      secondary: "#6b7280",
-      disabled: "#d1d5db",
+      primary: '#1a1a1a',
+      secondary: '#6b7280',
+      disabled: '#d1d5db',
     },
 
     // Borders
     border: {
-      default: "#e5e7eb",
-      focus: "#3b82f6",
-      hover: "#d1d5db",
+      default: '#e5e7eb',
+      focus: '#3b82f6',
+      hover: '#d1d5db',
     },
 
     // Accent
     accent: {
-      primary: "#3b82f6",
-      success: "#10b981",
-      warning: "#f59e0b",
-      error: "#ef4444",
+      primary: '#3b82f6',
+      success: '#10b981',
+      warning: '#f59e0b',
+      error: '#ef4444',
     },
 
     // Canvas
     canvas: {
-      grid: "#e5e7eb",
-      snap: "#10b981",
-      selection: "#3b82f6",
-      hover: "#60a5fa",
+      grid: '#e5e7eb',
+      snap: '#10b981',
+      selection: '#3b82f6',
+      hover: '#60a5fa',
     },
   },
-};
+}
 ```
 
 ---
@@ -1651,22 +1631,22 @@ const THEME = {
 ```typescript
 // Spatial indexing
 class SpatialIndex {
-  private quadtree: Quadtree;
+  private quadtree: Quadtree
 
   // Fast neighbor search pour snapping
-  findNearby(position: Vector3, radius: number): BlockInstance[];
+  findNearby(position: Vector3, radius: number): BlockInstance[]
 
   // Fast collision detection
-  detectCollisions(bounds: BoundingBox): BlockInstance[];
+  detectCollisions(bounds: BoundingBox): BlockInstance[]
 }
 
 // LRU Cache pour blocks
 class BlockCache {
-  private cache: LRUCache<string, Block>;
-  maxSize: number = 1000;
+  private cache: LRUCache<string, Block>
+  maxSize: number = 1000
 
-  get(id: string): Block | undefined;
-  set(id: string, block: Block): void;
+  get(id: string): Block | undefined
+  set(id: string, block: Block): void
 }
 ```
 
@@ -1674,16 +1654,16 @@ class BlockCache {
 
 ```typescript
 // Code splitting par route
-const Designer = lazy(() => import("./pages/Designer"));
-const Architect = lazy(() => import("./pages/Architect"));
+const Designer = lazy(() => import('./pages/Designer'))
+const Architect = lazy(() => import('./pages/Architect'))
 
 // Lazy load modules
-const Physics = lazy(() => import("./modules/physics"));
+const Physics = lazy(() => import('./modules/physics'))
 
 // Progressive library loading
 const loadLibraryChunk = (categoryId: string) => {
-  return api.getBlocks({ category: categoryId, limit: 50 });
-};
+  return api.getBlocks({ category: categoryId, limit: 50 })
+}
 ```
 
 ### Scalabilité

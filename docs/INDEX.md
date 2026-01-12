@@ -12,6 +12,7 @@
    - [WORKFLOWS_DETAILLES.md](#4--workflows_detaillesmd)
    - [DECISIONS_TECHNIQUES.md](#5--decisions_techniquesmd)
    - [SYNTHESE_VISUELLE.md](#6--synthese_visuellemd)
+   - [TESTING.md](#7--testingmd)
 3. [Recherche Rapide par Thème](#-recherche-rapide-par-thème)
 4. [Comment Naviguer Entre les Documents](#-comment-naviguer-entre-les-documents)
 5. [Comment Utiliser Cette Documentation](#-comment-utiliser-cette-documentation)
@@ -280,6 +281,32 @@ Ce document est la **table des matières complète** de toute la documentation t
 
 ---
 
+### 7. 🧪 [TESTING.md](./TESTING.md)
+
+**Guide de référence pour les tests avec Vitest et React Testing Library**
+
+**Contenu :**
+
+- Configuration Vitest et setup
+- Commandes de base
+- Queries et recherche d'éléments
+- Actions utilisateur (clics, saisie, etc.)
+- Assertions et matchers
+- Exemples pratiques (composants, router, async)
+- Bonnes pratiques et checklist
+
+**Pour qui :** Développeurs  
+**Quand lire :** Lors de l'écriture de tests unitaires et d'intégration
+
+**Sections clés :**
+
+- 🔍 Queries → Priorité des méthodes de recherche
+- 🎯 Actions → Simuler les interactions utilisateur
+- ✅ Assertions → Matchers Jest-DOM et Vitest
+- 📝 Exemples → Tests de composants, router, async
+
+---
+
 ### 2. 🏛️ [ARCHITECTURE.md](./ARCHITECTURE.md)
 
 **Architecture front-end complète et détaillée**
@@ -542,6 +569,13 @@ Ce document est la **table des matières complète** de toute la documentation t
 - ⚡ **Optimizations** → `ARCHITECTURE.md` section "Performance & Scalabilité"
 - 📈 **Scalabilité** → `DECISIONS_TECHNIQUES.md` section "Scalabilité"
 - 🚀 **Rendering** → `STACK_TECHNIQUE.md` sections "PixiJS" et "Three.js"
+
+### Tests
+
+- 🧪 **Guide Tests** → `TESTING.md` (guide complet)
+- ⚙️ **Configuration** → `TESTING.md` section "Configuration"
+- 🔍 **Queries** → `TESTING.md` section "Queries"
+- 📝 **Exemples** → `TESTING.md` section "Exemples Pratiques"
 
 ### Sécurité & DevOps
 

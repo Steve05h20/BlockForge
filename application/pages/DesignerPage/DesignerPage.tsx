@@ -1,9 +1,15 @@
 
 import DockLayout from 'rc-dock'
 import { DesignerLayoutConfig } from './DesignerLayoutConfig'
+import ProtectedRoute from '@blockForge-ui/components/ProtectedRoute/ProtectedRoute'
 
 export default function DesignerPage() {
-    return (
+  
+  const isConnected = false
+  const isAuthorized = false
+
+  return (
+    <ProtectedRoute isConnected={isConnected} isAuthorized={isAuthorized}>
       <DockLayout
         defaultLayout={DesignerLayoutConfig}
         style={{
@@ -13,5 +19,6 @@ export default function DesignerPage() {
           color: 'hsl(var(--foreground))',
         }}
       />
-    )
+    </ProtectedRoute>
+  )
 }

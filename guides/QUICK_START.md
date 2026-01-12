@@ -59,7 +59,7 @@
 
 - [x] Installer React Router
 - [x] Créer routes (Dashboard, Designer, Architect, Client, Library, Settings)
-- [ ] Créer ProtectedRoute component
+- [x] Créer ProtectedRoute component
 - [ ] Tester navigation
 
 #### Étape 1.5 : State Management

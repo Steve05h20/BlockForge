@@ -1,5 +1,5 @@
 import 'rc-dock/dist/rc-dock.css'
-import { Header, type NavigationItem } from '@blockForge-ui/components/Header'
+import { Header, type NavigationItem } from '@blockForge-ui/components/Header/Header'
 import { Outlet } from 'react-router-dom'
 
 const navigationItems: NavigationItem[] = [
