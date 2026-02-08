@@ -60,11 +60,11 @@
 - [x] Installer React Router
 - [x] Créer routes (Dashboard, Designer, Architect, Client, Library, Settings)
 - [x] Créer ProtectedRoute component
-- [ ] Tester navigation
+- [x] Tester navigation/header
 
 #### Étape 1.5 : State Management
 
-- [ ] Installer Zustand + Immer
+- [x] Installer Zustand + Immer
 - [ ] Créer stores de base (Project, Blocks, Instances, Layers, Selection, UI)
 - [ ] Configurer persist middleware
 - [ ] Tester stores
