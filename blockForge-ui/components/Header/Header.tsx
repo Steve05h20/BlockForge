@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Switch } from '@blockForge-ui/ui/switch'
 import { Typography } from '@blockForge-ui/ui/typography'
 import { cn } from '@blockForge-ui/lib/utils'
@@ -12,11 +12,12 @@ export interface NavigationItem {
 interface HeaderProps {
     title?: string
     navigationItems?: NavigationItem[]
+    locationPathname: string
 }
 
-export function Header({ title = 'BlockForge', navigationItems = [] }: HeaderProps) {
+export function Header({ title = 'BlockForge', navigationItems = [], locationPathname }: HeaderProps) {
     const [theme, setTheme] = useState<'light' | 'dark'>('light')
-    const location = useLocation()
+
 
     useEffect(() => {
         document.body.classList.toggle('dark', theme === 'dark')
@@ -36,9 +37,9 @@ export function Header({ title = 'BlockForge', navigationItems = [] }: HeaderPro
                         className={({ isActive }) =>
                             cn(
                                 'px-4 py-2 rounded-md text-sm font-medium transition-colors',
-                                isActive || (item.path === '/dashboard' && location.pathname === '/')
-                                    ? 'bg-primary text-primary-foreground'
-                                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                                isActive || (item.path === '/dashboard' && locationPathname === '/')
+                                    ? 'bg-primary text-primary-foreground active'
+                                    : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground disabled'
                             )
                         }
                     >
